@@ -7,8 +7,8 @@ add_executable(ComplexNumbers main.cpp
         Math/Complex.cpp
         Math/Complex.h
         Math/Constants.h
-        Screen/ScreenBuffer.cpp
-        Screen/ScreenBuffer.h
+        graphics/ScreenBuffer.cpp
+        graphics/ScreenBuffer.h
         Geometry/Shape2D.cpp
         Geometry/Shape2D.h
         Shapes/Rectangle.cpp
@@ -25,6 +25,8 @@ add_executable(ComplexNumbers main.cpp
         Geometry/Shape.h
         Shapes/Cube.cpp
         Shapes/Cube.h
-        Screen/Renderer.cpp
-        Screen/Renderer.h
+        graphics/Renderer.cpp
+        graphics/Renderer.h
+        graphics/Camera.cpp
+        graphics/Camera.h
 )

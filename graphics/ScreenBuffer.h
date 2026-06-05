@@ -13,10 +13,8 @@ public:
     void drawLine(float x1, float y1, float x2, float y2);
     void drawPixel(int x, int y, char pixel);
     void wrap(int x, int y, int* xr, int* yr) const;
-    int getWidth() const;
-    int getHeight() const;
-
-    [[nodiscard]] Hyperion::MathUtils::Point2D project(float x, float y, float z) const;
+    [[nodiscard]] int getWidth() const;
+    [[nodiscard]] int getHeight() const;
 
     void printScreen() const;
     void clearScreen();

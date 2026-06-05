@@ -20,7 +20,7 @@ namespace Hyperion::MathUtils {
     }
 
     struct Point2D {
-        int x{}, y{};
+        float x{}, y{};
         bool visible = false;
     };
 
@@ -30,6 +30,12 @@ namespace Hyperion::MathUtils {
 
     struct Edge {
         int start, end;
+    };
+
+    struct Face {
+        int a;
+        int b;
+        int c;
     };
 }
 

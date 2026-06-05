@@ -2,7 +2,7 @@
 #define HYPERION_SHAPE2D_H
 #include "Shape.h"
 #include "../math/Complex.h"
-#include "../screen/ScreenBuffer.h"
+#include "../graphics/ScreenBuffer.h"
 
 
 class Shape2D : public Shape {

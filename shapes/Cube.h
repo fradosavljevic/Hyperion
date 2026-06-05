@@ -6,7 +6,7 @@
 
 class Cube : public Shape3D {
 public:
-    Cube(int x, int y, int z, int size);
+    Cube(float x, float y, float z, float size);
 };
 
 

@@ -3,6 +3,8 @@
 #include <cmath>
 #include <complex>
 #include <iostream>
+
+#include "Camera.h"
 using namespace std;
 using namespace Hyperion::MathUtils;
 
@@ -22,11 +24,11 @@ void ScreenBuffer::resizeBuffer() {
     this->screenBuffer.resize(this->height, std::string(this->width, ' '));
 }
 
-//FIXME: Rewrite this
 void ScreenBuffer::drawPixel(const int x, const int y, const char pixel) {
-    int xr, yr;
-    wrap(x, y, &xr, &yr);
-    this->screenBuffer[yr][xr] = pixel;
+    if (x < 0 || x >= width ||
+        y < 0 || y >= height)
+        return;
+    this->screenBuffer[y][x] = pixel;
 }
 
 void ScreenBuffer::wrap(int x, int y, int* xr, int* yr) const {
@@ -34,7 +36,6 @@ void ScreenBuffer::wrap(int x, int y, int* xr, int* yr) const {
     *yr = (y % this->height + this->height) % this->height;
 }
 
-//FIXME: float -> int
 void ScreenBuffer::drawLine(float x1, float y1, float x2, float y2) {
     int x = static_cast<int>(std::round(x1));
     int y = static_cast<int>(std::round(y1));
@@ -70,30 +71,6 @@ int ScreenBuffer::getWidth() const {
 
 int ScreenBuffer::getHeight() const {
     return height;
-}
-
-Point2D ScreenBuffer::project(const float x, const float y, const float z) const {
-    Point2D projection;
-
-    const float z_dist = z + 5.0f;
-
-    if (z_dist <= 0.1f) {
-        projection.visible = false;
-        return projection;
-    }
-    constexpr float fov = 90.0f;
-    const float factor = (static_cast<float>(this->width) / 2.0f) / tan(toRadians(fov * 0.5f));
-
-    const float projectedX = (x / z_dist) * factor;
-    float projectedY = (y / z_dist) * factor;
-
-    projectedY *= 0.5f;
-
-    projection.x = static_cast<int>(projectedX + static_cast<float>(width) / 2);
-    projection.y = static_cast<int>(projectedY + static_cast<float>(height) / 2);
-    projection.visible = true;
-
-    return projection;
 }
 
 void ScreenBuffer::printScreen() const {
