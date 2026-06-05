@@ -19,7 +19,7 @@ void Renderer::draw3DShape(Shape3D &shape) const {
     const auto& worldVertices = shape.getWorldVertices();
     const auto& shapeFaces = shape.getFaces();
     const auto& shapeEdges = shape.getEdges();
-    Vector3 cameraPos(0, 0, -5);
+
     for (const auto& [a, b, c] : shapeFaces) {
         Vector3 A = worldVertices[a];
         Vector3 B = worldVertices[b];
@@ -27,7 +27,7 @@ void Renderer::draw3DShape(Shape3D &shape) const {
 
         Vector3 AB = B - A;
         Vector3 AC = C - A;
-        Vector3 view = cameraPos - A;
+        Vector3 view = camera->getPosition() - A;
         Vector3 normal = AB.cross(AC);
 
         if (normal.dot(view) < 0.0f)
