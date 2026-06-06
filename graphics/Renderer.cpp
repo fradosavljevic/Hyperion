@@ -18,7 +18,6 @@ void Renderer::draw3DShape(Shape3D &shape) const {
 
     const auto& worldVertices = shape.getWorldVertices();
     const auto& shapeFaces = shape.getFaces();
-    const auto& shapeEdges = shape.getEdges();
 
     for (const auto& [a, b, c] : shapeFaces) {
         Vector3 A = worldVertices[a];

@@ -12,7 +12,7 @@ constexpr int HEIGHT = 40;
 [[noreturn]] int main() {
     auto* newBuffer = new ScreenBuffer(WIDTH, HEIGHT);
 
-    auto myCube = Cube(0, 0, 0, 4);
+    auto myCube = Cube(0, 0, 0, 3);
     auto* renderer = new Renderer(newBuffer);
 
     auto lastTime = std::chrono::high_resolution_clock::now();
